@@ -1,18 +1,21 @@
 import React from 'react';
-import {TextInput } from 'react-native';
+import {TextInput, Dimensions} from 'react-native';
+
+const {width,height} = Dimensions.get("window");
 
 const Input = (props) => (
   <TextInput
   placeholder={props.placeholder}
   secureTextEntry={props.secureTextEntry}
-  style={[{width:300,
-          height:50,
+  keyboardType={props.keyboardType}
+  style={[{width:"90%",
+          height:"10%",
           backgroundColor:'#ededed',
           borderWidth:0.5,
           borderColor:"gray",
           borderRadius:7,
-          paddingLeft:7,
-          marginBottom:20},props.style]}/>
+          paddingLeft:10,
+          marginBottom:height*0.02},props.style]}/>
 );
 
 export default Input;
