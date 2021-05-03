@@ -42,7 +42,7 @@ export default class App extends Component{
       {/* Bottom */}
       <View style={[styles.subContainer,{flex:0.5,borderTopWidth:0.5,borderTopColor:"gray"}]}>
         <Text style={styles.mainText}>Don't have an account?</Text>
-        <Text style={styles.blueText}> Sign udsdfsdfp</Text>
+        <Text style={styles.blueText}> Sign up</Text>
       </View>
       </SafeAreaView>
     )
