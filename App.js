@@ -7,7 +7,24 @@ const {width,height} = Dimensions.get("window");
 
 export default class App extends Component{
 
+  state = {
+    username:"",
+    password:"",
+  }
+
+  componentDidMount(){
+    console.log("DİD MOUNT WORKED")
+  }
+
+  componentWillUnmount(){
+    console.log("WİLL UNMOUNT WORKED")
+  }
+
+
   render(){
+
+    console.log("Render Method start")
+
     return(
       <SafeAreaView
       style={{flex:1,}}>  
@@ -23,17 +40,22 @@ export default class App extends Component{
       <View style={[styles.subContainer,{flex:3}]}>
 
       <Input
-        placeholder={"Phone number, username or  email"}
-        keyboardType={"email-address"}/>
+        placeholder  ={"Phone number, username or  email"}
+        keyboardType ={"email-address"}
+        value        ={this.state.username}
+        onChangeText ={(value) => this.setState({username:value})}/>
 
       <Input placeholder={"Password"}
              secureTextEntry={true}
-             keyboardType={"numeric"}/>
+             keyboardType={"numeric"}
+             value={this.state.password}
+             onChangeText ={(value) => this.setState({password:value})}/>
       
       <View style={{
         flexDirection:"row",
         width:"90%",
-        marginBottom:20,
+        marginBottom:40,
+        marginTop:20,
         justifyContent:"space-between"}}>
 
         <View style={{flexDirection:"row"}}>
@@ -51,7 +73,7 @@ export default class App extends Component{
         </View>
       
         <TouchableOpacity>
-          <Text style={[styles.blueText,{fontSize:15,marginLeft:15}]}>Forgot Password</Text>
+          <Text style={[styles.blueText,{fontSize:15,marginLeft:16}]}>Forgot Password</Text>
         </TouchableOpacity>
 
       
@@ -59,7 +81,23 @@ export default class App extends Component{
 
       {/* Register Button */}       
       <Button
-        text={"Register"}/>
+        text={"Login"}
+        onPress={() =>{
+          console.log("USERNAME :",this.state.username,"PASSWORD",this.state.password)
+        }}/>
+      </View>
+
+      <View style={{flexDirection:"row",marginTop:30,justifyContent:"center"}}>
+
+         <View
+         style={styles.line}/>
+         <Text
+         style={{
+                fontSize:20,
+                color:"gray"}}>OR</Text>
+         <View
+         style={styles.line}/>
+
       </View>
 
       {/* Login with Facebook */}
@@ -70,7 +108,6 @@ export default class App extends Component{
       style ={styles.facebook_logo}    
       ></Image>
       <Text style={[styles.blueText,{fontSize:18,marginLeft:15}]}> Login with Facebook</Text>
-      
       </View>
 
       {/* Bottom */}
@@ -88,5 +125,6 @@ const styles = {
   blueText:{color:"#4495cb",fontWeight:"bold"},
   subContainer: {alignItems:"center",justifyContent:"center"},
   logo:{width:200,height:100},
-  facebook_logo:{width:30,height:30}
+  facebook_logo:{width:30,height:30},
+  line : {width:"40%",height:0.5,backgroundColor:"gray"}
 }

@@ -8,6 +8,8 @@ const Input = (props) => (
   placeholder={props.placeholder}
   secureTextEntry={props.secureTextEntry}
   keyboardType={props.keyboardType}
+  value={props.value}
+  onChangeText={(value) => props.onChangeText(value)}
   style={[{width:"90%",
           height:"10%",
           backgroundColor:'#ededed',

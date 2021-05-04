@@ -3,8 +3,7 @@ import { Text, TouchableOpacity } from 'react-native';
 
 const Button = (props) => (
   <TouchableOpacity
-  onPress={() => {
-  }}
+  onPress={() =>props.onPress()}
   
   style={{backgroundColor:"#4495cb",
                 width:"90%",
