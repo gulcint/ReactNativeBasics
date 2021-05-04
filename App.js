@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Input from "./src/image/Components/TextInput";
 import Button from "./src/image/Components/Button";
+import CheckBox from "./src/image/Components/CheckBox";
 
 const { width, height } = Dimensions.get("window");
 
@@ -17,6 +18,7 @@ export default class App extends Component {
   state = {
     username: "",
     password: "",
+    isShowPassword: true,
   };
 
   componentDidMount() {
@@ -29,6 +31,8 @@ export default class App extends Component {
 
   render() {
     console.log("Render Method start");
+
+    const { username, password, isShowPassword } = this.state;
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -44,7 +48,8 @@ export default class App extends Component {
           {/* Form */}
           <View style={[styles.subContainer, { flex: 3 }]}>
             <Input
-              placeholder={"Phone number, username or  email"}
+              placeholder={"Phone number, username or mail"}
+              secureTextEntry={isShowPassword}
               keyboardType={"email-address"}
               value={this.state.username}
               onChangeText={(value) => this.setState({ username: value })}
@@ -52,7 +57,7 @@ export default class App extends Component {
 
             <Input
               placeholder={"Password"}
-              secureTextEntry={true}
+              secureTextEntry={isShowPassword}
               keyboardType={"numeric"}
               value={this.state.password}
               onChangeText={(value) => this.setState({ password: value })}
@@ -67,20 +72,13 @@ export default class App extends Component {
                 justifyContent: "space-between",
               }}
             >
-              <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity
-                  style={{
-                    width: 20,
-                    height: 20,
-                    backgroundColor: "white",
-                    borderWidth: 1,
-                    marginRight: 10,
-                    borderColor: "gray",
-                  }}
-                ></TouchableOpacity>
-
-                <Text>Hide password</Text>
-              </View>
+              <CheckBox
+                text="Hide Password"
+                status={isShowPassword}
+                onPress={() =>
+                  this.setState({ isShowPassword: !isShowPassword })
+                }
+              ></CheckBox>
 
               <TouchableOpacity>
                 <Text
@@ -110,12 +108,14 @@ export default class App extends Component {
               flexDirection: "row",
               marginTop: 30,
               justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <View style={styles.line} />
             <Text
               style={{
-                fontSize: 20,
+                padding: 10,
+                fontSize: 15,
                 color: "gray",
               }}
             >
@@ -130,8 +130,6 @@ export default class App extends Component {
               styles.subContainer,
               {
                 flex: 0.5,
-                borderTopWidth: 0.5,
-                borderTopColor: "gray",
                 flexDirection: "row",
               },
             ]}
