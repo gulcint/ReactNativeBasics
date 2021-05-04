@@ -33,4 +33,4 @@ const Checkbox = (props) => (
   </View>
 );
 
-export default Checkbox;
+export {Checkbox};

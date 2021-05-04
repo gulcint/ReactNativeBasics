@@ -8,9 +8,12 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import Input from "./src/image/Components/TextInput";
-import Button from "./src/image/Components/Button";
-import CheckBox from "./src/image/Components/CheckBox";
+
+// import Input from "./src/image/Components/TextInput";
+// import Button from "./src/image/Components/Button";
+// import CheckBox from "./src/image/Components/CheckBox";
+
+import {Input,Button,CheckBox} from "./src/image/Components"
 
 const { width, height } = Dimensions.get("window");
 
@@ -38,7 +41,7 @@ export default class App extends Component {
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={{ flex: 1 }}>
           {/*Logo image*/}
-          <View style={[styles.subContainer, { flex: 2 }]}>
+          <View style={[styles.subContainer, { flex: 1.5 }]}>
             <Image
               source={require("./src/image/logo.png")}
               style={styles.logo}
